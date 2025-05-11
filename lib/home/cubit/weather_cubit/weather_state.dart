@@ -18,9 +18,9 @@ final class WeatherLoaded extends WeatherState {
     required this.forecast,
   });
 
-  final ListElement currentWeather;
-  final List<ListElement> todaysForecast;
-  final List<ListElement> forecast;
+  final WeatherModel currentWeather;
+  final List<WeatherModel> todaysForecast;
+  final List<WeatherModel> forecast;
 }
 
 final class WeatherFailed extends WeatherState {}

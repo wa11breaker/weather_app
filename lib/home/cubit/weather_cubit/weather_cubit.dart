@@ -38,9 +38,9 @@ class WeatherCubit extends Cubit<WeatherState> {
     }
   }
 
-  List<ListElement> _getDailyForecast(List<ListElement> data) {
-    final dailyForecast = <ListElement>[];
-    final groupedByDate = <String, ListElement>{};
+  List<WeatherModel> _getDailyForecast(List<WeatherModel> data) {
+    final dailyForecast = <WeatherModel>[];
+    final groupedByDate = <String, WeatherModel>{};
     for (var forecast in data) {
       final dateKey =
           DateTime(

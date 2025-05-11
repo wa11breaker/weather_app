@@ -5,7 +5,7 @@ import 'package:weather_app/home/widgets/utils.dart';
 
 class DailyForecaset extends StatelessWidget {
   const DailyForecaset({super.key, required this.dailyForecast});
-  final List<ListElement> dailyForecast;
+  final List<WeatherModel> dailyForecast;
 
   @override
   Widget build(BuildContext context) {

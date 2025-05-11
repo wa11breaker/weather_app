@@ -5,7 +5,7 @@ import 'package:weather_app/home/widgets/utils.dart';
 
 class HourlyForecast extends StatelessWidget {
   const HourlyForecast({super.key, required this.forecasts});
-  final List<ListElement> forecasts;
+  final List<WeatherModel> forecasts;
 
   @override
   Widget build(BuildContext context) {

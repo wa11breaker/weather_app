@@ -1,100 +1,4 @@
-import 'dart:convert';
-
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
-
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
-
-class Welcome {
-  String cod;
-  int message;
-  int cnt;
-  List<ListElement> list;
-  City city;
-
-  Welcome({
-    required this.cod,
-    required this.message,
-    required this.cnt,
-    required this.list,
-    required this.city,
-  });
-
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-    cod: json["cod"],
-    message: json["message"],
-    cnt: json["cnt"],
-    list: List<ListElement>.from(
-      json["list"].map((x) => ListElement.fromJson(x)),
-    ),
-    city: City.fromJson(json["city"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "cod": cod,
-    "message": message,
-    "cnt": cnt,
-    "list": List<dynamic>.from(list.map((x) => x.toJson())),
-    "city": city.toJson(),
-  };
-}
-
-class City {
-  int id;
-  String name;
-  Coord coord;
-  String country;
-  int population;
-  int timezone;
-  int sunrise;
-  int sunset;
-
-  City({
-    required this.id,
-    required this.name,
-    required this.coord,
-    required this.country,
-    required this.population,
-    required this.timezone,
-    required this.sunrise,
-    required this.sunset,
-  });
-
-  factory City.fromJson(Map<String, dynamic> json) => City(
-    id: json["id"],
-    name: json["name"],
-    coord: Coord.fromJson(json["coord"]),
-    country: json["country"],
-    population: json["population"],
-    timezone: json["timezone"],
-    sunrise: json["sunrise"],
-    sunset: json["sunset"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "coord": coord.toJson(),
-    "country": country,
-    "population": population,
-    "timezone": timezone,
-    "sunrise": sunrise,
-    "sunset": sunset,
-  };
-}
-
-class Coord {
-  double lat;
-  double lon;
-
-  Coord({required this.lat, required this.lon});
-
-  factory Coord.fromJson(Map<String, dynamic> json) =>
-      Coord(lat: json["lat"]?.toDouble(), lon: json["lon"]?.toDouble());
-
-  Map<String, dynamic> toJson() => {"lat": lat, "lon": lon};
-}
-
-class ListElement {
+class WeatherModel {
   int dt;
   MainClass main;
   List<Weather> weather;
@@ -102,11 +6,10 @@ class ListElement {
   Wind wind;
   int visibility;
   double pop;
-  Sys sys;
   DateTime dtTxt;
   Rain? rain;
 
-  ListElement({
+  WeatherModel({
     required this.dt,
     required this.main,
     required this.weather,
@@ -114,12 +17,11 @@ class ListElement {
     required this.wind,
     required this.visibility,
     required this.pop,
-    required this.sys,
     required this.dtTxt,
     this.rain,
   });
 
-  factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
+  factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
     dt: json["dt"],
     main: MainClass.fromJson(json["main"]),
     weather: List<Weather>.from(
@@ -129,7 +31,6 @@ class ListElement {
     wind: Wind.fromJson(json["wind"]),
     visibility: json["visibility"],
     pop: json["pop"]?.toDouble(),
-    sys: Sys.fromJson(json["sys"]),
     dtTxt: DateTime.parse(json["dt_txt"]),
     rain: json["rain"] == null ? null : Rain.fromJson(json["rain"]),
   );
@@ -142,7 +43,6 @@ class ListElement {
     "wind": wind.toJson(),
     "visibility": visibility,
     "pop": pop,
-    "sys": sys.toJson(),
     "dt_txt": dtTxt.toIso8601String(),
     "rain": rain?.toJson(),
   };
@@ -216,17 +116,6 @@ class Rain {
       Rain(the3H: json["3h"]?.toDouble());
 
   Map<String, dynamic> toJson() => {"3h": the3H};
-}
-
-class Sys {
-  Pod pod;
-
-  Sys({required this.pod});
-
-  factory Sys.fromJson(Map<String, dynamic> json) =>
-      Sys(pod: podValues.map[json["pod"]]!);
-
-  Map<String, dynamic> toJson() => {"pod": podValues.reverse[pod]};
 }
 
 enum Pod { D, N }

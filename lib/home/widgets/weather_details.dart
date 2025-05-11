@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/home/data/weather_model.dart' show ListElement;
+import 'package:weather_app/home/data/weather_model.dart' show WeatherModel;
 
 class WeatherDetailsWidget extends StatelessWidget {
   const WeatherDetailsWidget({super.key, required this.weather});
 
-  final ListElement weather;
+  final WeatherModel weather;
 
   @override
   Widget build(BuildContext context) {

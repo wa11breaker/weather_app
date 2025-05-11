@@ -6,7 +6,7 @@ import 'package:weather_app/home/widgets/utils.dart';
 class CurrentWeather extends StatelessWidget {
   const CurrentWeather({super.key, required this.weather});
 
-  final ListElement weather;
+  final WeatherModel weather;
 
   @override
   Widget build(BuildContext context) {

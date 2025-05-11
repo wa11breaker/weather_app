@@ -13,7 +13,7 @@ class WeatherRepository {
   final HttpClient _client;
   final baseUrl = 'https://api.openweathermap.org/data/2.5/forecast';
 
-  Future<List<ListElement>> getWeather({
+  Future<List<WeatherModel>> getWeather({
     required double latitude,
     required double longitude,
   }) async {
@@ -24,9 +24,9 @@ class WeatherRepository {
       final res = await _client.get(url);
       final json = jsonDecode(res.body);
 
-      List<ListElement> weatherDatas = [];
+      List<WeatherModel> weatherDatas = [];
       for (final i in json["list"] as List) {
-        weatherDatas.add(ListElement.fromJson(i));
+        weatherDatas.add(WeatherModel.fromJson(i));
       }
 
       return weatherDatas;

@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
     final locaionState = context.watch<LocationCubit>().state;
     final weatherState = context.watch<WeatherCubit>().state;
 
-    ListElement? weather;
+    WeatherModel? weather;
 
     if (weatherState is WeatherLoaded) {
       weather = weatherState.currentWeather;
