@@ -13,7 +13,7 @@ class WeatherErrorWidget extends StatelessWidget {
     return Center(
       child: Card(
         elevation: 0,
-        color: colorScheme.errorContainer.withOpacity(0.7),
+        color: colorScheme.errorContainer.withValues(alpha: 0.7),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         child: Padding(
           padding: const EdgeInsets.all(32),
@@ -28,7 +28,7 @@ class WeatherErrorWidget extends StatelessWidget {
                   color: colorScheme.errorContainer,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: colorScheme.error.withOpacity(0.5),
+                    color: colorScheme.error.withValues(alpha: 0.5),
                     width: 2,
                   ),
                 ),
